@@ -29,6 +29,15 @@ pipeline {
         }
       }
     }
+   stage('Docker Debug') {
+    steps {
+        sh '''
+        which docker
+        docker --version
+        docker version
+        '''
+    }
+}
     stage('Build and Push Docker Image') {
       environment {
         DOCKER_IMAGE = "rohitdockerdevops/ultimate-cicd:${BUILD_NUMBER}"
